@@ -1,8 +1,6 @@
 GLOBAL FOOD EXPLORER
 
 
-
-
 Global Food Explorer is a web-based application designed to help users discover meals from different parts of the world.
 The main idea behind the project is to provide a simple and interactive platform where users can explore food items by searching for meal names and viewing related information.
 
