@@ -2,12 +2,13 @@ h1
 {
     text-decoration: underline;
     text-align: center;
-    color: #00D4FF; 
+    
     font-size: 60px;
 }
 
+
 body{
- background: linear-gradient(135deg, #020617, #0f172a, #1e1b4b);
+    background: linear-gradient(135deg, #2d0b2e, #225d7f, #2c5181);
     color: #EAF0FF;
 }
 
@@ -20,14 +21,17 @@ body{
     background-color: white; 
 }
 
-span{
-    margin: 85px;
+/* nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    align-content: space-between;
    transition: transform 1s ease-in;
     color: #EAF0FF;
-}
+} */
 span:hover
 {
-    margin: 85px;
+    
    transition: transform 1s ease-out;
     color: #EAF0FF;
       box-shadow: 0 0 10px #00ffae,
@@ -42,10 +46,11 @@ nav{
     padding: 10px;
     background-color: #111A33;
 
-    display: flex;             
-    align-items: center; 
-    justify-content: center;       
-    gap: 8px;                  
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+                      
 }
 #search
 {
@@ -61,4 +66,20 @@ h2
     display: flex;
     justify-content: center;
     text-decoration: underline;
+}
+@media screen and (width<=415px){
+   #nav{
+    flex-wrap: wrap;
+   }
+
+    
+}
+@media screen and (width<=320px) {
+    #nav{
+        display: flex;
+    
+    justify-content: space-evenly;
+        flex-wrap: wrap;
+    }
+    
 }
