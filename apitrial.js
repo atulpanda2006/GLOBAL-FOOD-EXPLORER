@@ -1,18 +1,12 @@
 async function fetchMeals(query) {
   try {
     const res = await fetch(
-      `https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`,
+      `https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`
     );
 
     const data = await res.json();
 
-    let meals = [];
-
-    if (data.meals) {
-      meals = data.meals;
-    } else {
-      meals = [];
-    }
+    let meals = data.meals ? data.meals : [];
 
     let Meals = meals.map((meal) => {
       return {
@@ -21,7 +15,6 @@ async function fetchMeals(query) {
         Category: meal.strCategory,
         Type: meal.strArea,
         img: meal.strMealThumb,
-
         YoutubeLink: meal.strYoutube,
       };
     });
@@ -33,14 +26,15 @@ async function fetchMeals(query) {
   }
 }
 
+const query = "Fry"
+
 console.log("Hello , Welcome to our restaurant. What would you like to eat? ");
 
-fetchMeals("Chicken").then((meals) => {
+fetchMeals(query).then((meals) => {
   if (meals.length === 0) {
     console.log("Sorry, we don't have that meal. Please try something else.");
   } else {
     console.log("Here are the meals we have for you:");
-
     console.log("Meals:", meals);
   }
 });
@@ -50,83 +44,101 @@ btn.addEventListener("click", () => {
   location.reload();
 });
 
+
 const india = document.getElementById("india");
-let indian = [];
+const japan = document.getElementById("japan");
+const china = document.getElementById("china");
+
 
 india.addEventListener("click", () => {
-  fetchMeals("chicken").then((meal) => {
-    const indian = meal.filter((e) => {
-      return e.Type == "Indian" && e.Meal.toLowerCase().includes("chicken");
-    });
+  fetchMeals(query).then((meal) => {
+    const indian = meal.filter((e) => e.Type == "Indian");
+
     const p = document.createElement("p");
     p.innerText = "Indian";
     document.body.append(p);
+
     const div2 = document.createElement("div");
 
-    indian.forEach((item) => {
+    if (indian.length == 0) {
       const div = document.createElement("div");
-      div.innerText = item.Meal;
+      div.innerHTML = `<h3>Not found</h3>`;
       div2.appendChild(div);
-    });
+    } else {
+      indian.forEach((item) => {
+        const div = document.createElement("div");
+        div.innerText = item.Meal;
+        div2.appendChild(div);
+      });
+    }
 
     document.body.appendChild(div2);
   });
 });
 
-const japan = document.getElementById("japan");
-let japanese = [];
 
 japan.addEventListener("click", () => {
-  fetchMeals("chicken").then((meal) => {
-    const japanese = meal.filter((e) => {
-      return e.Type == "Japanese" && e.Meal.toLowerCase().includes("chicken");
-    });
+  fetchMeals(query).then((meal) => {
+    const japanese = meal.filter((e) => e.Type == "Japanese");
+
     const p = document.createElement("p");
     p.innerText = "Japanese";
     document.body.append(p);
+
     const div2 = document.createElement("div");
 
-    japanese.forEach((item) => {
+    if (japanese.length == 0) {
       const div = document.createElement("div");
-      div.innerText = item.Meal;
+      div.innerHTML = `<h3>Not found</h3>`;
       div2.appendChild(div);
-    });
+    } else {
+      japanese.forEach((item) => {
+        const div = document.createElement("div");
+        div.innerText = item.Meal;
+        div2.appendChild(div);
+      });
+    }
 
     document.body.appendChild(div2);
   });
 });
 
 
-const mexico = document.getElementById("mexico");
-let mexican = [];
+china.addEventListener("click", () => {
+  fetchMeals(query).then((meal) => {
+    const chinese = meal.filter((e) => e.Type == "Chinese");
 
-mexico.addEventListener("click", () => {
-  fetchMeals("chicken").then((meal) => {
-    const mexican = meal.filter((e) => {
-      return e.Type == "Mexican" && e.Meal.toLowerCase().includes("chicken");
-    });
     const p = document.createElement("p");
-    p.innerText = "Mexican";
+    p.innerText = "Chinese";
     document.body.append(p);
+
     const div2 = document.createElement("div");
 
-    mexican.forEach((item) => {
+    if (chinese.length == 0) {
       const div = document.createElement("div");
-      div.innerText = item.Meal;
+      div.innerHTML = `<h3>Not found</h3>`;
       div2.appendChild(div);
-    });
+    } else {
+      chinese.forEach((item) => {
+        const div = document.createElement("div");
+        div.innerText = item.Meal;
+        div2.appendChild(div);
+      });
+    }
 
     document.body.appendChild(div2);
   });
 });
+
 
 const h1 = document.getElementById("heading");
 
-setInterval(() => {
-  const red = Math.floor(Math.random() * 255);
-  const blue = Math.floor(Math.random() * 255);
-  const green = Math.floor(Math.random() * 255);
+h1.style.transition = "color 0.8s ease-in-out";
 
-  h1.style.transition = "background-color 0.8s ease-in-out";
+setInterval(() => {
+  const red = Math.floor(Math.random() * 256);
+  const green = Math.floor(Math.random() * 256);
+  const blue = Math.floor(Math.random() * 256);
+
   h1.style.color = `rgb(${red}, ${green}, ${blue})`;
 }, 1000);

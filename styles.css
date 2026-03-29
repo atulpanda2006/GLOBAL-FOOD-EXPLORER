@@ -57,17 +57,13 @@ h2 {
   text-decoration: underline;
 }
 
-@media screen and (width<=415px) {
-  #nav {
-    flex-wrap: wrap;
-  }
-}
+
 
 @media screen and (width<=320px) {
-  #nav {
+  nav {
     display: flex;
 
-    justify-content: space-evenly;
+    justify-content: space-around;
     flex-wrap: wrap;
   }
 }
