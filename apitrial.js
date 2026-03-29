@@ -64,6 +64,9 @@ india.addEventListener("click", () => {
         e.Meal.toLowerCase().includes("chicken")
       );
     });
+    const p = document.createElement("p")
+    p.innerText="Indian"
+    document.body.append(p)
    const div2 = document.createElement("div");
 
     indian.forEach((item) => {
@@ -90,6 +93,9 @@ japan.addEventListener("click", () => {
         e.Meal.toLowerCase().includes("chicken")
       );
     });
+    const p = document.createElement("p")
+    p.innerText="Japanese"
+    document.body.append(p)
    const div2 = document.createElement("div");
 
     japanese.forEach((item) => {
@@ -113,7 +119,7 @@ const green =(Math.floor)((Math.random())*255)
 
 h1.style.transition = "background-color 0.8s ease-in-out";
 h1.style.color = `rgb(${red}, ${green}, ${blue})`;
-},2000)
+},1000)
 
 
 
