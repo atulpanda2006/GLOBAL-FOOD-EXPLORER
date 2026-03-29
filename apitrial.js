@@ -20,10 +20,9 @@ async function fetchMeals(query) {
         Meal: meal.strMeal,
         Category: meal.strCategory,
         Type: meal.strArea,
-        img:meal.strMealThumb,
+        img: meal.strMealThumb,
 
         YoutubeLink: meal.strYoutube,
-
       };
     });
 
@@ -51,76 +50,83 @@ btn.addEventListener("click", () => {
   location.reload();
 });
 
-
 const india = document.getElementById("india");
 let indian = [];
 
 india.addEventListener("click", () => {
   fetchMeals("chicken").then((meal) => {
-
     const indian = meal.filter((e) => {
-      return (
-        e.Type == "Indian" &&
-        e.Meal.toLowerCase().includes("chicken")
-      );
+      return e.Type == "Indian" && e.Meal.toLowerCase().includes("chicken");
     });
-    const p = document.createElement("p")
-    p.innerText="Indian"
-    document.body.append(p)
-   const div2 = document.createElement("div");
+    const p = document.createElement("p");
+    p.innerText = "Indian";
+    document.body.append(p);
+    const div2 = document.createElement("div");
 
     indian.forEach((item) => {
       const div = document.createElement("div");
-      div.innerText = item.Meal;  
+      div.innerText = item.Meal;
       div2.appendChild(div);
     });
 
     document.body.appendChild(div2);
-
   });
 });
-
 
 const japan = document.getElementById("japan");
 let japanese = [];
 
 japan.addEventListener("click", () => {
   fetchMeals("chicken").then((meal) => {
-
     const japanese = meal.filter((e) => {
-      return (
-        e.Type == "Japanese" &&
-        e.Meal.toLowerCase().includes("chicken")
-      );
+      return e.Type == "Japanese" && e.Meal.toLowerCase().includes("chicken");
     });
-    const p = document.createElement("p")
-    p.innerText="Japanese"
-    document.body.append(p)
-   const div2 = document.createElement("div");
+    const p = document.createElement("p");
+    p.innerText = "Japanese";
+    document.body.append(p);
+    const div2 = document.createElement("div");
 
     japanese.forEach((item) => {
       const div = document.createElement("div");
-      div.innerText = item.Meal;  
+      div.innerText = item.Meal;
       div2.appendChild(div);
     });
 
     document.body.appendChild(div2);
-
   });
 });
 
 
-const h1 = document.getElementById("heading")
+const mexico = document.getElementById("mexico");
+let mexican = [];
+
+mexico.addEventListener("click", () => {
+  fetchMeals("chicken").then((meal) => {
+    const mexican = meal.filter((e) => {
+      return e.Type == "Mexican" && e.Meal.toLowerCase().includes("chicken");
+    });
+    const p = document.createElement("p");
+    p.innerText = "Mexican";
+    document.body.append(p);
+    const div2 = document.createElement("div");
+
+    mexican.forEach((item) => {
+      const div = document.createElement("div");
+      div.innerText = item.Meal;
+      div2.appendChild(div);
+    });
+
+    document.body.appendChild(div2);
+  });
+});
+
+const h1 = document.getElementById("heading");
 
 setInterval(() => {
-const red = (Math.floor)((Math.random())*255)
-const blue =(Math.floor)((Math.random())*255) 
-const green =(Math.floor)((Math.random())*255) 
+  const red = Math.floor(Math.random() * 255);
+  const blue = Math.floor(Math.random() * 255);
+  const green = Math.floor(Math.random() * 255);
 
-h1.style.transition = "background-color 0.8s ease-in-out";
-h1.style.color = `rgb(${red}, ${green}, ${blue})`;
-},1000)
-
-
-
-
+  h1.style.transition = "background-color 0.8s ease-in-out";
+  h1.style.color = `rgb(${red}, ${green}, ${blue})`;
+}, 1000);
