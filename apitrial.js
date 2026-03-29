@@ -13,7 +13,6 @@ async function fetchMeals(query) {
     } else {
       meals = [];
     }
-// console.log(meals)
 
     let Meals = meals.map((meal) => {
       return {
@@ -77,6 +76,45 @@ india.addEventListener("click", () => {
 
   });
 });
+
+
+const japan = document.getElementById("japan");
+let japanese = [];
+
+japan.addEventListener("click", () => {
+  fetchMeals("chicken").then((meal) => {
+
+    const japanese = meal.filter((e) => {
+      return (
+        e.Type == "Japanese" &&
+        e.Meal.toLowerCase().includes("chicken")
+      );
+    });
+   const div2 = document.createElement("div");
+
+    japanese.forEach((item) => {
+      const div = document.createElement("div");
+      div.innerText = item.Meal;  
+      div2.appendChild(div);
+    });
+
+    document.body.appendChild(div2);
+
+  });
+});
+
+
+const h1 = document.getElementById("heading")
+
+setInterval(() => {
+const red = (Math.floor)((Math.random())*255)
+const blue =(Math.floor)((Math.random())*255) 
+const green =(Math.floor)((Math.random())*255) 
+
+h1.style.transition = "background-color 0.8s ease-in-out";
+h1.style.color = `rgb(${red}, ${green}, ${blue})`;
+},2000)
+
 
 
 

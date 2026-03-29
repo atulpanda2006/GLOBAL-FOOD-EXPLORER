@@ -9,6 +9,8 @@ h1
 
 body{
     background: linear-gradient(135deg, #2d0b2e, #225d7f, #2c5181);
+  transition: background-color 0.8s ease-in-out;
+
     color: #EAF0FF;
 }
 
