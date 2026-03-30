@@ -6,7 +6,16 @@ async function fetchMeals(query) {
 
     const data = await res.json();
 
-    let meals = data.meals ? data.meals : [];
+
+    let meals=[]
+    if(data.meals)
+    {
+      meals=data.meals
+    }
+    else 
+    {
+      meals=[]
+    }
 
     let Meals = meals.map((meal) => {
       return {
@@ -32,12 +41,15 @@ console.log("Hello , Welcome to our restaurant. What would you like to eat? ");
 
 fetchMeals(query).then((meals) => {
   if (meals.length === 0) {
-    console.log("Sorry, we don't have that meal. Please try something else.");
+    const p = document.createElement("p")
+    p.innerText="Sorry, we don't have that meal. Please try something else."
+    document.body.appendChild(p)
   } else {
     console.log("Here are the meals we have for you:");
     console.log("Meals:", meals);
   }
 });
+
 
 const btn = document.getElementById("logo");
 btn.addEventListener("click", () => {
@@ -52,6 +64,7 @@ const china = document.getElementById("china");
 
 india.addEventListener("click", () => {
   fetchMeals(query).then((meal) => {
+    
     const indian = meal.filter((e) => e.Type == "Indian");
 
     const p = document.createElement("p");
@@ -62,7 +75,7 @@ india.addEventListener("click", () => {
 
     if (indian.length == 0) {
       const div = document.createElement("div");
-      div.innerHTML = `<h3>Not found</h3>`;
+      div.innerHTML = `<h3>Not Found</h3>`
       div2.appendChild(div);
     } else {
       indian.forEach((item) => {
@@ -89,7 +102,7 @@ japan.addEventListener("click", () => {
 
     if (japanese.length == 0) {
       const div = document.createElement("div");
-      div.innerHTML = `<h3>Not found</h3>`;
+      div.innerHTML = `<h3>Not Found</h3>`;
       div2.appendChild(div);
     } else {
       japanese.forEach((item) => {
@@ -116,7 +129,7 @@ china.addEventListener("click", () => {
 
     if (chinese.length == 0) {
       const div = document.createElement("div");
-      div.innerHTML = `<h3>Not found</h3>`;
+      div.innerHTML = `<h3>Not Found</h3>`;
       div2.appendChild(div);
     } else {
       chinese.forEach((item) => {
