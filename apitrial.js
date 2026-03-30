@@ -40,47 +40,78 @@ const query = "Fry"
 console.log("Hello , Welcome to our restaurant. What would you like to eat? ");
 
 fetchMeals(query).then((meals) => {
+
+
   if (meals.length === 0) {
+
+
     const p = document.createElement("p")
+
     p.innerText="Sorry, we don't have that meal. Please try something else."
+
     document.body.appendChild(p)
-  } else {
+  } 
+  else {
+
     console.log("Here are the meals we have for you:");
+
+
     console.log("Meals:", meals);
   }
 });
 
 
 const btn = document.getElementById("logo");
+
 btn.addEventListener("click", () => {
+
   location.reload();
 });
 
 
 const india = document.getElementById("india");
+
 const japan = document.getElementById("japan");
+
+
 const china = document.getElementById("china");
 
 
 india.addEventListener("click", () => {
+
   fetchMeals(query).then((meal) => {
     
     const indian = meal.filter((e) => e.Type == "Indian");
 
     const p = document.createElement("p");
+
+
     p.innerText = "Indian";
+
+
     document.body.append(p);
 
     const div2 = document.createElement("div");
 
     if (indian.length == 0) {
+
       const div = document.createElement("div");
+
       div.innerHTML = `<h3>Not Found</h3>`
+
       div2.appendChild(div);
-    } else {
+    } 
+    
+    else {
+
       indian.forEach((item) => {
+
         const div = document.createElement("div");
+
+
         div.innerText = item.Meal;
+
+
         div2.appendChild(div);
       });
     }
@@ -91,23 +122,43 @@ india.addEventListener("click", () => {
 
 
 japan.addEventListener("click", () => {
+
   fetchMeals(query).then((meal) => {
+
+
     const japanese = meal.filter((e) => e.Type == "Japanese");
 
     const p = document.createElement("p");
+
+
     p.innerText = "Japanese";
+
+
     document.body.append(p);
 
     const div2 = document.createElement("div");
 
     if (japanese.length == 0) {
+
+
       const div = document.createElement("div");
+
+
       div.innerHTML = `<h3>Not Found</h3>`;
+
+
       div2.appendChild(div);
+
+
     } else {
+
       japanese.forEach((item) => {
+
         const div = document.createElement("div");
+
+
         div.innerText = item.Meal;
+
         div2.appendChild(div);
       });
     }
@@ -118,23 +169,40 @@ japan.addEventListener("click", () => {
 
 
 china.addEventListener("click", () => {
+
   fetchMeals(query).then((meal) => {
+
     const chinese = meal.filter((e) => e.Type == "Chinese");
 
+
     const p = document.createElement("p");
+
     p.innerText = "Chinese";
+
     document.body.append(p);
 
     const div2 = document.createElement("div");
 
     if (chinese.length == 0) {
+
+
       const div = document.createElement("div");
+
+
       div.innerHTML = `<h3>Not Found</h3>`;
+
       div2.appendChild(div);
+
+
     } else {
+
       chinese.forEach((item) => {
+
         const div = document.createElement("div");
+
         div.innerText = item.Meal;
+
+
         div2.appendChild(div);
       });
     }
