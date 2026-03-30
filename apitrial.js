@@ -82,10 +82,6 @@ async function fetchMeals(query) {
 const query = "Fry";
 
 
-let flag = true;
-
-
-
 const loading = document.createElement("p");
 
 
@@ -93,11 +89,6 @@ loading.innerText = "Loading...";
 
 
 loading.style.fontWeight = "bold";
-
-
-
-console.log("Hello , Welcome to our restaurant. What would you like to eat? ");
-
 
 
 fetchMeals(query).then((meals) => {
@@ -110,9 +101,6 @@ fetchMeals(query).then((meals) => {
 
 
     p.innerHTML = `<b>Sorry, we don't have that meal. Please try something else.</b>`;
-
-
-    flag = false;
 
 
     document.body.appendChild(p);
@@ -160,7 +148,6 @@ const china = document.getElementById("china");
 india.addEventListener("click", () => {
 
 
-  if (flag) {
 
 
     document.body.appendChild(loading);
@@ -216,6 +203,12 @@ india.addEventListener("click", () => {
 
           image.src = item.img;
 
+          image.style.width="350px" ;
+
+          image.style.height="350px";
+
+          image.style.borderRadius="8px";
+
 
           div2.append(div, image);
 
@@ -225,24 +218,16 @@ india.addEventListener("click", () => {
 
       }
 
-
       document.body.appendChild(div2);
 
 
     });
 
 
-  }
-
-
 });
 
 
-
 japan.addEventListener("click", () => {
-
-
-  if (flag) {
 
 
     document.body.appendChild(loading);
@@ -281,7 +266,9 @@ japan.addEventListener("click", () => {
         div2.appendChild(div);
 
 
-      } else {
+      } 
+
+      else {
 
 
         japanese.forEach((item) => {
@@ -299,6 +286,15 @@ japan.addEventListener("click", () => {
           image.src = item.img;
 
 
+
+          image.style.width="350px" ;
+
+          image.style.height="350px";
+          
+          image.style.borderRadius="8px";
+
+
+
           div2.append(div, image);
 
 
@@ -307,14 +303,10 @@ japan.addEventListener("click", () => {
 
       }
 
-
       document.body.appendChild(div2);
 
 
     });
-
-
-  }
 
 
 });
@@ -322,9 +314,6 @@ japan.addEventListener("click", () => {
 
 
 china.addEventListener("click", () => {
-
-
-  if (flag) {
 
 
     document.body.appendChild(loading);
@@ -363,7 +352,9 @@ china.addEventListener("click", () => {
         div2.appendChild(div);
 
 
-      } else {
+      } 
+      
+      else {
 
 
         chinese.forEach((item) => {
@@ -378,7 +369,13 @@ china.addEventListener("click", () => {
           const image = document.createElement("img");
 
 
-          image.src = item.img;
+           image.src = item.img;
+
+          image.style.width="350px" ;
+
+          image.style.height="350px";
+          
+          image.style.borderRadius="8px";
 
 
           div2.append(div, image);
@@ -386,9 +383,7 @@ china.addEventListener("click", () => {
 
         });
 
-
       }
-
 
       document.body.appendChild(div2);
 
@@ -396,18 +391,11 @@ china.addEventListener("click", () => {
     });
 
 
-  }
-
-
 });
 
 
 
 const h1 = document.getElementById("heading");
-
-
-h1.style.transition = "color 0.8s ease-in-out";
-
 
 
 setInterval(() => {
