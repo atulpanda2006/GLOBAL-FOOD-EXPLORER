@@ -23,7 +23,7 @@ body {
 span:hover {
   transition: transform 1s ease-out;
   color: #eaf0ff;
-  box-shadow:
+  text-shadow:
     0 0 10px #00ffae,
     0 0 20px #00d4ff,
     0 0 40px #00d4ff;
