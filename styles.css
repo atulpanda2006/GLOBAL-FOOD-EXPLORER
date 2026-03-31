@@ -1,6 +1,10 @@
-h1 {
-  text-decoration: underline;
-  text-align: center;
+#heading {
+  background-image: url("download-heading-img (2).png");
+  width: auto;
+  height: 400px;
+  background-repeat: no-repeat;
+  background-position: center;
+  
 
   font-size: 60px;
 }
@@ -17,7 +21,7 @@ body {
   border: 2px solid #00d4ff;
   height: auto;
   border-radius: 50%;
-  background-color: white;
+
 }
 
 span:hover {
@@ -57,12 +61,9 @@ h2 {
   text-decoration: underline;
 }
 
-
-
 @media screen and (width<=320px) {
   nav {
     display: flex;
-
     justify-content: space-around;
     flex-wrap: wrap;
   }

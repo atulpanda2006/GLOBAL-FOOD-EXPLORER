@@ -74,12 +74,9 @@ async function fetchMeals(query) {
 
   }
 
-
 }
 
-
-
-const query = "Fry";
+const query = "Biryani";
 
 
 const loading = document.createElement("p");
@@ -121,7 +118,6 @@ fetchMeals(query).then((meals) => {
 });
 
 
-
 const btn = document.getElementById("logo");
 
 
@@ -132,7 +128,6 @@ btn.addEventListener("click", () => {
 
 
 });
-
 
 
 const india = document.getElementById("india");
@@ -146,7 +141,6 @@ const china = document.getElementById("china");
 
 
 india.addEventListener("click", () => {
-
 
 
 
@@ -212,17 +206,12 @@ india.addEventListener("click", () => {
 
           div2.append(div, image);
 
-
         });
 
-
       }
-
       document.body.appendChild(div2);
 
-
-    });
-
+   });
 
 });
 
@@ -294,7 +283,6 @@ japan.addEventListener("click", () => {
           image.style.borderRadius="8px";
 
 
-
           div2.append(div, image);
 
 
@@ -310,7 +298,6 @@ japan.addEventListener("click", () => {
 
 
 });
-
 
 
 china.addEventListener("click", () => {
@@ -331,7 +318,7 @@ china.addEventListener("click", () => {
       const p = document.createElement("p");
 
 
-      p.innerText = "Chinese";
+      p.innerHTML = `<h3>Chinese</h3>`;
 
 
       document.body.append(p);
