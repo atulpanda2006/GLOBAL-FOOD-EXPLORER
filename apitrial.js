@@ -177,6 +177,7 @@ india.addEventListener("click", () => {
 
         div.innerHTML = `<h3>Not Found</h3>`;
 
+     
 
         div2.appendChild(div);
 
@@ -221,7 +222,9 @@ india.addEventListener("click", () => {
 
           
           
+          div.style.marginTop="10px";
 
+          div.style.marginBottom="10px";
 
           div2.append(div, div3);
 
@@ -314,12 +317,17 @@ japan.addEventListener("click", () => {
 
         div.style.justifyContent = "center";
 
-        div2.append(div, div3);
-      });
 
+        div2.append(div, div3);
+           
+          div.style.marginTop="10px";
+
+          div.style.marginBottom="10px";
+      });
+ document.body.appendChild(div2);
     }
 
-    document.body.appendChild(div2);
+   
   });
 
 });
@@ -405,15 +413,19 @@ china.addEventListener("click", () => {
         div.style.alignItems="center";
 
 
-        div.style.gap="10px";
-
-        div2.append(div, div3);
         
-      });
+        div2.append(div, div3);
 
+        div.style.marginTop="10px";
+
+        div.style.marginBottom="10px";
+      });
+         
+          
+document.body.appendChild(div2);
     }
 
-    document.body.appendChild(div2);
+    
 
   });
 
