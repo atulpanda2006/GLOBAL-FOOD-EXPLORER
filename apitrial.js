@@ -76,7 +76,7 @@ async function fetchMeals(query) {
 
 }
 
-const query = "Biryani";
+const query = "Chicken";
 
 
 const loading = document.createElement("p");
@@ -111,7 +111,7 @@ fetchMeals(query).then((meals) => {
 
     console.log("Meals:", meals);
 
-
+    console.log("API response:", meals);
   }
 
 
@@ -159,9 +159,10 @@ india.addEventListener("click", () => {
       const p = document.createElement("p");
 
 
-      p.innerText = "Indian";
+      p.innerHTML = "<h3>Indian</h3>";
 
-
+      p.style.textAlign="center";
+      
       document.body.append(p);
 
 
@@ -194,8 +195,11 @@ india.addEventListener("click", () => {
 
           const image = document.createElement("img");
 
+          const div3 = document.createElement("div");
 
           image.src = item.img;
+
+          image.alt="Image not avilable";
 
           image.style.width="350px" ;
 
@@ -203,8 +207,23 @@ india.addEventListener("click", () => {
 
           image.style.borderRadius="8px";
 
+          div3.append(image)
 
-          div2.append(div, image);
+          div3.style.display="flex";
+
+          div3.style.justifyContent="center";
+
+          div.style.display="flex";
+
+          div.style.alignContent="space-around";
+
+          div.style.justifyContent="center";
+
+          
+          
+
+
+          div2.append(div, div3);
 
         });
 
@@ -219,168 +238,186 @@ india.addEventListener("click", () => {
 japan.addEventListener("click", () => {
 
 
-    document.body.appendChild(loading);
+  document.body.appendChild(loading);
 
 
-    fetchMeals(query).then((meal) => {
+  fetchMeals(query).then((meal) => {
+
+    loading.innerText = '';
 
 
-      loading.innerText='';
+    const japanese = meal.filter((e) => e.Type == "Japanese");
 
 
-      const japanese = meal.filter((e) => e.Type == "Japanese");
+    const p = document.createElement("p");
 
 
-      const p = document.createElement("p");
+    p.innerHTML = "<h3>Japanese</h3>";
 
 
-      p.innerText = "Japanese";
+    p.style.textAlign = "center";
+
+    document.body.append(p);
+
+    const div2 = document.createElement("div");
+
+    if (japanese.length == 0) {
+
+      const div = document.createElement("div");
 
 
-      document.body.append(p);
+      div.innerHTML = `<h3>Not Found</h3>`;
 
 
-      const div2 = document.createElement("div");
+      div2.appendChild(div);
 
+    } else {
 
-      if (japanese.length == 0) {
-
+      japanese.forEach((item) => {
 
         const div = document.createElement("div");
 
 
-        div.innerHTML = `<h3>Not Found</h3>`;
+        div.innerText = item.Meal;
+
+        const image = document.createElement("img");
 
 
-        div2.appendChild(div);
+        const div3 = document.createElement("div");
+
+        image.src = item.img;
 
 
-      } 
-
-      else {
+        image.alt = "Image not available";
 
 
-        japanese.forEach((item) => {
+        image.style.width = "350px";
 
 
-          const div = document.createElement("div");
+        image.style.height = "350px";
 
 
-          div.innerText = item.Meal;
+        image.style.borderRadius = "8px";
+
+        div3.append(image);
 
 
-          const image = document.createElement("img");
+        div3.style.display = "flex";
 
 
-          image.src = item.img;
+        div3.style.justifyContent = "center";
+
+        div.style.display = "flex";
+
+        div.style.alignContent = "space-around";
 
 
+        div.style.justifyContent = "center";
 
-          image.style.width="350px" ;
+        div2.append(div, div3);
+      });
 
-          image.style.height="350px";
-          
-          image.style.borderRadius="8px";
+    }
 
-
-          div2.append(div, image);
-
-
-        });
-
-
-      }
-
-      document.body.appendChild(div2);
-
-
-    });
-
+    document.body.appendChild(div2);
+  });
 
 });
 
 
 china.addEventListener("click", () => {
 
-
-    document.body.appendChild(loading);
-
-
-    fetchMeals(query).then((meal) => {
+  document.body.appendChild(loading);
 
 
-      loading.innerText='';
+  fetchMeals(query).then((meal) => {
 
 
-      const chinese = meal.filter((e) => e.Type == "Chinese");
+    loading.innerText = '';
 
 
-      const p = document.createElement("p");
+    const chinese = meal.filter((e) => e.Type == "Chinese");
 
 
-      p.innerHTML = `<h3>Chinese</h3>`;
+    const p = document.createElement("p");
 
 
-      document.body.append(p);
+    p.innerHTML = "<h3>Chinese</h3>";
 
 
-      const div2 = document.createElement("div");
+    p.style.textAlign = "center";
+
+    document.body.append(p);
+
+    const div2 = document.createElement("div");
+
+    if (chinese.length == 0) {
+
+      const div = document.createElement("div");
 
 
-      if (chinese.length == 0) {
+      div.innerHTML = `<h3>Not Found</h3>`;
 
+
+      div2.appendChild(div);
+
+    } else {
+
+      chinese.forEach((item) => {
 
         const div = document.createElement("div");
 
 
-        div.innerHTML = `<h3>Not Found</h3>`;
+        div.innerText = item.Meal;
+
+        const image = document.createElement("img");
 
 
-        div2.appendChild(div);
+        const div3 = document.createElement("div");
+
+        image.src = item.img;
 
 
-      } 
-      
-      else {
+        image.alt = "Image not available";
 
 
-        chinese.forEach((item) => {
+        image.style.width = "350px";
 
 
-          const div = document.createElement("div");
+        image.style.height = "350px";
 
 
-          div.innerText = item.Meal;
+        image.style.borderRadius = "8px";
+
+        div3.append(image);
 
 
-          const image = document.createElement("img");
+        div3.style.display = "flex";
+
+        
+
+        div3.style.justifyContent = "center";
+
+        div.style.display = "flex";
+
+        div.style.justifyContent = "center";
+
+        div.style.alignItems="center";
 
 
-           image.src = item.img;
+        div.style.gap="10px";
 
-          image.style.width="350px" ;
+        div2.append(div, div3);
+        
+      });
 
-          image.style.height="350px";
-          
-          image.style.borderRadius="8px";
+    }
 
+    document.body.appendChild(div2);
 
-          div2.append(div, image);
-
-
-        });
-
-      }
-
-      document.body.appendChild(div2);
-
-
-    });
-
+  });
 
 });
-
-
 
 const h1 = document.getElementById("heading");
 
