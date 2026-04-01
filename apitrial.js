@@ -159,7 +159,7 @@ india.addEventListener("click", () => {
       const p = document.createElement("p");
 
 
-      p.innerHTML = "<h3>Indian</h3>";
+      p.innerHTML = "<br><h3>Indian</h3><br>";
 
       p.style.textAlign="center";
       
@@ -252,7 +252,7 @@ japan.addEventListener("click", () => {
     const p = document.createElement("p");
 
 
-    p.innerHTML = "<h3>Japanese</h3>";
+    p.innerHTML = "<br><h3>Japanese</h3><br>";
 
 
     p.style.textAlign = "center";
@@ -342,7 +342,7 @@ china.addEventListener("click", () => {
     const p = document.createElement("p");
 
 
-    p.innerHTML = "<h3>Chinese</h3>";
+    p.innerHTML = "<br><h3>Chinese</h3><br>";
 
 
     p.style.textAlign = "center";
