@@ -142,7 +142,7 @@ const china = document.getElementById("china");
 
 india.addEventListener("click", () => {
 
-
+alert('Just continue scrolling down after clicking on the buttons to check futher food items')
 
     document.body.appendChild(loading);
 
@@ -240,7 +240,7 @@ india.addEventListener("click", () => {
 
 japan.addEventListener("click", () => {
 
-
+alert('Just continue scrolling down after clicking on the buttons to check futher food items')
   document.body.appendChild(loading);
 
 
@@ -334,7 +334,7 @@ japan.addEventListener("click", () => {
 
 
 china.addEventListener("click", () => {
-
+alert('Just continue scrolling down after clicking on the buttons to check futher food items')
   document.body.appendChild(loading);
 
 
