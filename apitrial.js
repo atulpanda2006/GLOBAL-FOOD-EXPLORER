@@ -1,40 +1,17 @@
 async function fetchMeals(query) {
-
-
   try {
-
-
     const res = await fetch(
       `https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`
     );
 
-
     const data = await res.json();
 
+    let meals = data.meals ? data.meals : [];
 
-    let meals = [];
-
-
-    if (data.meals) {
-
-
-      meals = data.meals;
-
-
-    } else {
-
-
-      meals = [];
-
-
-    }
-
-
-    let Meals = meals.map((meal) => {
+    return meals.map((meal) => {
 
 
       return {
-
 
         MealId: meal.idMeal,
 
@@ -49,430 +26,231 @@ async function fetchMeals(query) {
 
 
         img: meal.strMealThumb,
-
+        
 
         YoutubeLink: meal.strYoutube,
-
-
       };
 
-
     });
-
-
-    return Meals;
-
-
-  } catch (err) {
+  } 
+  catch (err) {
 
 
     console.log("Error:", err);
 
 
     return [];
-
-
   }
-
 }
 
-const query = "Chicken";
-
+const query = "Cake";
 
 const loading = document.createElement("p");
 
 
-loading.innerText = "Loading...";
+loading.innerText = "Loading..."; // so that it could take the time to reload when api is called and within that this Loading will be shown in the screen
 
 
 loading.style.fontWeight = "bold";
 
 
-fetchMeals(query).then((meals) => {
-
-
-  if (meals.length === 0) {
-
-
-    const p = document.createElement("p");
-
-
-    p.innerHTML = `<b>Sorry, we don't have that meal. Please try something else.</b>`;
-
-
-    document.body.appendChild(p);
-
-
-  } else {
-
-
-    console.log("Here are the meals we have for you:");
-
-
-    console.log("Meals:", meals);
-
-    console.log("API response:", meals);
-  }
-
-
-});
-
-
 const logo = document.getElementById("logo");
 
 
-const container = document.getElementById("container")
+const container = document.getElementById("container");
+
 
 logo.addEventListener("click", () => {
 
 
   location.reload();
 
+});
 
+const india = document.getElementById("india");
+const japan = document.getElementById("japan");
+const china = document.getElementById("china");
+
+
+function displayMeals(meals, title) { // function to display the item cards so that I don't have to independently make heading and print indivisually
+
+  container.innerHTML = ""; 
+
+  const heading = document.createElement("h3");
+
+  heading.innerText = title;    // Heading to show the country
+
+  heading.style.textAlign = "center";
+
+  heading.style.width = "100%"; // so that no other item should come near to it 
+
+  heading.style.textDecoration="underline";
+
+  container.appendChild(heading); // posting it to body
+
+  if (meals.length === 0) { // that means no such element is found
+
+    const div = document.createElement("div");
+
+    div.innerHTML = `<h3>Not Found</h3>`;
+
+    container.appendChild(div); 
+
+    return;
+  }
+
+  meals.forEach((item) => {
+
+
+    const card = document.createElement("div"); // to show items in form of div(box)
+    
+
+    card.style.width = "220px"; 
+
+
+    const image = document.createElement("img"); 
+
+
+    image.src = item.img; // extracting image of the meal
+
+
+    image.style.width = "300px";
+
+    image.style.height="auto";
+
+    image.style.borderRadius = "8px";
+
+   image.addEventListener('mouseenter', () => { // think it as a hover in css
+
+
+  image.style.transform = "translateY(-15px)";
+
+  image.style.transition = "all 0.3s"
+
+  image.style.boxShadow="0 0 50px #00c2e9"
+
+  image.style.cursor="pointer";
+  
+});
+
+image.addEventListener('mouseleave', () => {
+
+  image.style.transform = "";
+
+   image.style.boxShadow="";
 });
 
 
-const india = document.getElementById("india");
+image.addEventListener("click", () => { // making the images clickable
+
+const link = document.createElement("a");
+
+if((item.YoutubeLink))
+{
+  
+
+link.href = item.YoutubeLink;
+
+link.target = "_blank";
+
+link.appendChild(image);
+
+card.appendChild(link);
+}
 
 
-const japan = document.getElementById("japan");
+});
+
+    const name = document.createElement("p");
 
 
-const china = document.getElementById("china");
+    name.innerText = item.Meal;
 
+    name.style.marginLeft="50px";
+
+    card.append(image, name);
+
+    
+
+    container.appendChild(card);
+    
+  });
+}
 
 
 india.addEventListener("click", () => {
 
-alert('Just continue scrolling down after clicking on the buttons to check futher food items')
 
-    document.body.appendChild(loading);
+  container.appendChild(loading);
 
+  fetchMeals(query).then((meal) => {
 
-    fetchMeals(query).then((meal) => {
+    loading.innerText = "";
 
-
-      loading.innerText='';
-
-
-      const indian = meal.filter((e) => e.Type == "Indian");
+    const indian = meal.filter((e) => e.Type === "Indian" || e.Type==="Dutch" || e.Type==="Egyptian" || e.Type==="Irish" || e.Type==="Malaysian" || e.Type==="Mexican" || e.Type==="Portuguese" || e.Type==="Argentinian" || e.Type==="Thai" || e.Type==="Turkish" || e.Type==="Uruguayan" || e.Type==="Australian" || e.Type=="Venezulan");
 
 
-      const p = document.createElement("p");
-
-
-      p.innerHTML = "<br><h3>Indian</h3><br>";
-
-      p.style.textAlign="center";
-      
-      document.body.append(p);
-
-
-   
-
-
-      if (indian.length == 0) {
-
-
-        const div = document.createElement("div");
-
-
-        div.innerHTML = `<h3>Not Found</h3>`;
-
-     
-
-        container.appendChild(div);
-
-
-      } else {
-
-
-        indian.forEach((item) => {
-
-
-          const div = document.createElement("div");
-
-
-          div.innerText = item.Meal;
-
-
-          const image = document.createElement("img");
-
-          const div3 = document.createElement("div");
-
-          image.src = item.img;
-
-          image.alt="Image not avilable";
-
-          image.style.width="350px" ;
-
-          image.style.height="350px";
-
-          image.style.borderRadius="8px";
-
-          div3.append(image)
-
-          div3.style.display="flex";
-
-          div3.style.justifyContent="center";
-
-          div.style.display="flex";
-
-          div.style.alignContent="space-around";
-
-          div.style.justifyContent="center";
-
-          
-          
-          div.style.marginTop="10px";
-
-          div.style.marginBottom="10px";
-
-          container.append(div, div3);
-
-        });
-
-      }
-      document.body.appendChild(container);
-
-   });
-
+    displayMeals(indian, "Indian");
+  });
 });
 
 
 japan.addEventListener("click", () => {
 
-alert('Just continue scrolling down after clicking on the buttons to check futher food items')
-  document.body.appendChild(loading);
 
+  container.appendChild(loading);
 
   fetchMeals(query).then((meal) => {
 
-    loading.innerText = '';
 
+    loading.innerText = "";
 
-    const japanese = meal.filter((e) => e.Type == "Japanese");
+    const japanese = meal.filter((e) => e.Type === "Japanese" || e.Type==="French" || e.Type==="Canadian" || e.Type==="Greek" || e.Type==="Moroccan" || e.Type==="Moroccan" || e.Type==="Moroccan" || e.Type==="Spanish" || e.Type==="Saudi Arabian" || e.Type==="Syrian" || e.Type==="Polish" || e.Type==="Ukrainian");
 
-
-    const p = document.createElement("p");
-
-
-    p.innerHTML = "<br><h3>Japanese</h3><br>";
-
-
-    p.style.textAlign = "center";
-
-    document.body.append(p);
-
-    const div2 = document.createElement("div");
-
-    if (japanese.length == 0) {
-
-      const div = document.createElement("div");
-
-
-      div.innerHTML = `<h3>Not Found</h3>`;
-
-
-      container.appendChild(div);
-
-    } else {
-
-      japanese.forEach((item) => {
-
-        const div = document.createElement("div");
-
-
-        div.innerText = item.Meal;
-
-        const image = document.createElement("img");
-
-
-        const div3 = document.createElement("div");
-
-        image.src = item.img;
-
-
-        image.alt = "Image not available";
-
-
-        image.style.width = "350px";
-
-
-        image.style.height = "350px";
-
-
-        image.style.borderRadius = "8px";
-
-        div3.append(image);
-
-
-        div3.style.display = "flex";
-
-
-        div3.style.justifyContent = "center";
-
-        div.style.display = "flex";
-
-        div.style.alignContent = "space-around";
-
-
-        div.style.justifyContent = "center";
-
-
-        container.append(div, div3);
-           
-          div.style.marginTop="10px";
-
-          div.style.marginBottom="10px";
-      });
- document.body.appendChild(container);
-    }
-
-   
+    displayMeals(japanese, "Japanese");
   });
-
 });
 
 
 china.addEventListener("click", () => {
-alert('Just continue scrolling down after clicking on the buttons to check futher food items')
-  document.body.appendChild(loading);
 
+
+  container.appendChild(loading);
 
   fetchMeals(query).then((meal) => {
 
-
-    loading.innerText = '';
-
-
-    const chinese = meal.filter((e) => e.Type == "Chinese");
+    loading.innerText = "";
 
 
-    const p = document.createElement("p");
+    const chinese = meal.filter((e) => e.Type === "Chinese" || e.Type==="British" || e.Type==="American" || e.Type==="Italian" || e.Type==="Kenyan" || e.Type=== "Jamaican" || e.Type==="Russian" || e.Type==="Slovakian" || e.Type==="Vietnamese" || e.Type==="Algerian" || e.Type==="Tunisian" || e.Type==="Filipino");
 
 
-    p.innerHTML = "<br><h3>Chinese</h3><br>";
-
-
-    p.style.textAlign = "center";
-
-    document.body.append(p);
-
-    
-
-    if (chinese.length == 0) {
-
-      const div = document.createElement("div");
-
-
-      div.innerHTML = `<h3>Not Found</h3>`;
-
-
-      container.appendChild(div);
-
-    } else {
-
-      chinese.forEach((item) => {
-
-        const div = document.createElement("div");
-
-
-        div.innerText = item.Meal;
-
-        const image = document.createElement("img");
-
-
-        const div3 = document.createElement("div");
-
-        image.src = item.img;
-
-
-        image.alt = "Image not available";
-
-
-        image.style.width = "350px";
-
-
-        image.style.height = "350px";
-
-
-        image.style.borderRadius = "8px";
-
-        div3.append(image);
-
-
-        div3.style.display = "flex";
-
-        
-
-        div3.style.justifyContent = "center";
-
-        div.style.display = "flex";
-
-        div.style.justifyContent = "center";
-
-        div.style.alignItems="center";
-
-
-        
-        container.append(div);
-        container.append(div3)
-
-        div.style.marginTop="10px";
-
-        div.style.marginBottom="10px";
-      });
-         
-          
-document.body.appendChild(container);
-    }
-
-    
-
+    displayMeals(chinese, "Chinese");
   });
-
 });
 
-const h1 = document.getElementById("heading");
 
 
-setInterval(() => {
+const mode = document.getElementById("mode"); 
+
+const body = document.getElementById("body");
+
+mode.addEventListener("click", () => { // light and dark mode changer button
 
 
-  const red = Math.floor(Math.random() * 256);
+  if (mode.textContent === "Dark") {
 
+    mode.textContent = "Light";
+    body.style.color = "red";
+    body.style.backgroundColor = "white";
 
-  const green = Math.floor(Math.random() * 256);
+  } 
 
+  else {
 
-  const blue = Math.floor(Math.random() * 256);
+    mode.textContent = "Dark";
+    body.style.color = "white";
+    body.style.backgroundColor = "black";
 
-
-  h1.style.color = `rgb(${red}, ${green}, ${blue})`;
-
-
-}, 1000);
-
-const mode = document.getElementById("mode")
-
-
-const body = document.getElementById("body")
-
-mode.addEventListener("click", () => {
-
-  if(mode.textContent=="Dark")
-  {
-      mode.textContent="Light"
-      body.style.color="red"
-      body.style.backgroundColor="white"
   }
-
-
-  else
-  {
-      mode.textContent="Dark"
-      body.style.color="white"
-      body.style.backgroundColor="black"
-  }
-})
+});
