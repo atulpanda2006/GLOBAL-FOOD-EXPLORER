@@ -16,8 +16,8 @@
 }
 
 body {
-  background: linear-gradient(135deg, #2d0b2e, #225d7f, #2c5181);
-  transition: background-color 0.8s ease-in-out;
+  background-color: black;
+
   color: #eaf0ff;
   font-family: sans-serif;
 }
@@ -87,6 +87,19 @@ h2 {
 }
 
 
+#mode{
+  padding: 5px 8px;
+  border: 2px solid rgb(157, 74, 74);
+  border-radius: 10px;
+}
+
+#container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;  
+  gap: 20px;                 
+  padding: 10px;
+}
 @media (max-width: 480px) {
   #heading {
     height: 25vh;

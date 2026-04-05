@@ -118,10 +118,12 @@ fetchMeals(query).then((meals) => {
 });
 
 
-const btn = document.getElementById("logo");
+const logo = document.getElementById("logo");
 
 
-btn.addEventListener("click", () => {
+const container = document.getElementById("container")
+
+logo.addEventListener("click", () => {
 
 
   location.reload();
@@ -166,7 +168,7 @@ alert('Just continue scrolling down after clicking on the buttons to check futhe
       document.body.append(p);
 
 
-      const div2 = document.createElement("div");
+   
 
 
       if (indian.length == 0) {
@@ -179,7 +181,7 @@ alert('Just continue scrolling down after clicking on the buttons to check futhe
 
      
 
-        div2.appendChild(div);
+        container.appendChild(div);
 
 
       } else {
@@ -226,12 +228,12 @@ alert('Just continue scrolling down after clicking on the buttons to check futhe
 
           div.style.marginBottom="10px";
 
-          div2.append(div, div3);
+          container.append(div, div3);
 
         });
 
       }
-      document.body.appendChild(div2);
+      document.body.appendChild(container);
 
    });
 
@@ -272,7 +274,7 @@ alert('Just continue scrolling down after clicking on the buttons to check futhe
       div.innerHTML = `<h3>Not Found</h3>`;
 
 
-      div2.appendChild(div);
+      container.appendChild(div);
 
     } else {
 
@@ -318,13 +320,13 @@ alert('Just continue scrolling down after clicking on the buttons to check futhe
         div.style.justifyContent = "center";
 
 
-        div2.append(div, div3);
+        container.append(div, div3);
            
           div.style.marginTop="10px";
 
           div.style.marginBottom="10px";
       });
- document.body.appendChild(div2);
+ document.body.appendChild(container);
     }
 
    
@@ -357,7 +359,7 @@ alert('Just continue scrolling down after clicking on the buttons to check futhe
 
     document.body.append(p);
 
-    const div2 = document.createElement("div");
+    
 
     if (chinese.length == 0) {
 
@@ -367,7 +369,7 @@ alert('Just continue scrolling down after clicking on the buttons to check futhe
       div.innerHTML = `<h3>Not Found</h3>`;
 
 
-      div2.appendChild(div);
+      container.appendChild(div);
 
     } else {
 
@@ -414,7 +416,8 @@ alert('Just continue scrolling down after clicking on the buttons to check futhe
 
 
         
-        div2.append(div, div3);
+        container.append(div);
+        container.append(div3)
 
         div.style.marginTop="10px";
 
@@ -422,7 +425,7 @@ alert('Just continue scrolling down after clicking on the buttons to check futhe
       });
          
           
-document.body.appendChild(div2);
+document.body.appendChild(container);
     }
 
     
@@ -450,3 +453,26 @@ setInterval(() => {
 
 
 }, 1000);
+
+const mode = document.getElementById("mode")
+
+
+const body = document.getElementById("body")
+
+mode.addEventListener("click", () => {
+
+  if(mode.textContent=="Dark")
+  {
+      mode.textContent="Light"
+      body.style.color="red"
+      body.style.backgroundColor="white"
+  }
+
+
+  else
+  {
+      mode.textContent="Dark"
+      body.style.color="white"
+      body.style.backgroundColor="black"
+  }
+})
