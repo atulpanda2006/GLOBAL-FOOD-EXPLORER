@@ -43,7 +43,20 @@ async function fetchMeals(query) {
   }
 }
 
-const query = "Cake";
+const input = document.getElementById("search");
+
+
+let query = input.value;
+
+
+if(query.trim() === "")
+{
+  query = "Cake";
+}
+
+
+console.log(query);
+
 
 const loading = document.createElement("p");
 
@@ -67,34 +80,62 @@ logo.addEventListener("click", () => {
 
 });
 
+
 const india = document.getElementById("india");
 const japan = document.getElementById("japan");
 const china = document.getElementById("china");
+
+input.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    const query = getQuery();
+
+    container.innerHTML = "<p style='color:#ff5e00;'>Loading...</p>";
+
+    fetchMeals(query).then((meals) => {
+      displayMeals(meals, `Results for "${query}"`);
+    });
+  }
+});
+
 
 
 function displayMeals(meals, title) { // function to display the item cards so that I don't have to independently make heading and print indivisually
 
   container.innerHTML = ""; 
 
-  const heading = document.createElement("h3");
+
+  const heading = document.createElement("h1");
+
 
   heading.innerText = title;    // Heading to show the country
 
+
   heading.style.textAlign = "center";
+
 
   heading.style.width = "100%"; // so that no other item should come near to it 
 
-  heading.style.textDecoration="underline";
+
+
+  heading.style.textDecoration = "underline";
+
+
+
 
   container.appendChild(heading); // posting it to body
 
+
   if (meals.length === 0) { // that means no such element is found
+
 
     const div = document.createElement("div");
 
+
     div.innerHTML = `<h3>Not Found</h3>`;
 
+
     container.appendChild(div); 
+
 
     return;
   }
@@ -116,9 +157,28 @@ function displayMeals(meals, title) { // function to display the item cards so t
 
     image.style.width = "300px";
 
-    image.style.height="auto";
+
+    image.style.height = "auto";
+
 
     image.style.borderRadius = "8px";
+
+
+    const name = document.createElement("p");
+
+
+    name.innerText = item.Meal;
+
+    name.style.marginLeft = "85px";
+
+    name.style.fontWeight = "bold";
+
+    name.style.fontSize = "20px";
+
+    
+
+    card.append(image, name);
+
 
    image.addEventListener('mouseenter', () => { // think it as a hover in css
 
@@ -127,9 +187,15 @@ function displayMeals(meals, title) { // function to display the item cards so t
 
   image.style.transition = "all 0.3s"
 
-  image.style.boxShadow="0 0 50px #00c2e9"
+  image.style.boxShadow = "0 0 50px #00c2e9"
 
-  image.style.cursor="pointer";
+  image.style.cursor = "pointer";
+
+  name.style.textShadow = "0 0 5px #f79235, 0 0 10px #30a3e1, 0 0 20px #a3ff53";
+
+  name.style.textDecoration = "underline";
+
+  
   
 });
 
@@ -137,8 +203,13 @@ image.addEventListener('mouseleave', () => {
 
   image.style.transform = "";
 
-   image.style.boxShadow="";
+   image.style.boxShadow = "";
 });
+
+
+
+
+    container.appendChild(card);
 
 
 image.addEventListener("click", () => { // making the images clickable
@@ -159,20 +230,10 @@ card.appendChild(link);
 }
 
 
+
 });
 
-    const name = document.createElement("p");
-
-
-    name.innerText = item.Meal;
-
-    name.style.marginLeft="50px";
-
-    card.append(image, name);
-
     
-
-    container.appendChild(card);
     
   });
 }
@@ -206,6 +267,7 @@ japan.addEventListener("click", () => {
     loading.innerText = "";
 
     const japanese = meal.filter((e) => e.Type === "Japanese" || e.Type==="French" || e.Type==="Canadian" || e.Type==="Greek" || e.Type==="Moroccan" || e.Type==="Moroccan" || e.Type==="Moroccan" || e.Type==="Spanish" || e.Type==="Saudi Arabian" || e.Type==="Syrian" || e.Type==="Polish" || e.Type==="Ukrainian");
+
 
     displayMeals(japanese, "Japanese");
   });
@@ -241,7 +303,9 @@ mode.addEventListener("click", () => { // light and dark mode changer button
   if (mode.textContent === "Dark") {
 
     mode.textContent = "Light";
+
     body.style.color = "red";
+
     body.style.backgroundColor = "white";
 
   } 
@@ -249,7 +313,9 @@ mode.addEventListener("click", () => { // light and dark mode changer button
   else {
 
     mode.textContent = "Dark";
+
     body.style.color = "white";
+
     body.style.backgroundColor = "black";
 
   }
