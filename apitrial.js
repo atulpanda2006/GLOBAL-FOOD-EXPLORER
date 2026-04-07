@@ -85,19 +85,6 @@ const india = document.getElementById("india");
 const japan = document.getElementById("japan");
 const china = document.getElementById("china");
 
-input.addEventListener("keydown", (e) => {
-  if (e.key === "Enter") {
-    const query = getQuery();
-
-    container.innerHTML = "<p style='color:#ff5e00;'>Loading...</p>";
-
-    fetchMeals(query).then((meals) => {
-      displayMeals(meals, `Results for "${query}"`);
-    });
-  }
-});
-
-
 
 function displayMeals(meals, title) { // function to display the item cards so that I don't have to independently make heading and print indivisually
 
