@@ -121,7 +121,9 @@ function displayMeals(meals, title) {
   
   heading.style.textDecoration = "underline";
 
+
   container.appendChild(heading);
+
 
   if (meals.length === 0) {
 
@@ -140,7 +142,9 @@ function displayMeals(meals, title) {
 
     const card = document.createElement("div");
 
+
     card.style.width = "220px";
+
 
     const image = document.createElement("img");
 
@@ -155,7 +159,9 @@ function displayMeals(meals, title) {
 
     image.style.borderRadius = "8px";
 
+
     const name = document.createElement("p");
+
 
     name.innerText = item.Meal;
 
@@ -170,6 +176,7 @@ function displayMeals(meals, title) {
 
 
     card.append(image, name);
+
 
     image.addEventListener("mouseenter", () => {
 
@@ -195,6 +202,8 @@ function displayMeals(meals, title) {
 
     image.addEventListener("mouseleave", () => {
       image.style.transform = "";
+
+
       image.style.boxShadow = "";
     });
 
@@ -205,8 +214,12 @@ function displayMeals(meals, title) {
 
       if (item.YoutubeLink) {
         link.href = item.YoutubeLink;
+
+        
         link.target = "_blank";
+        
         link.appendChild(image);
+        
         card.appendChild(link);
       }
     });
@@ -220,6 +233,8 @@ india.addEventListener("click", () => {
   container.appendChild(loading);
 
   fetchMeals(getQuery()).then((meal) => {
+
+    
     loading.innerText = "";
 
     const indian = meal.filter(
