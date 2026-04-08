@@ -59,6 +59,8 @@ if (query.trim() === "") {
 }
 
 
+
+
 const loading = document.createElement("p");
 
 
@@ -343,4 +345,18 @@ mode.addEventListener("click", () => {
 
     body.style.backgroundColor = "black";
   }
+});
+
+
+
+window.addEventListener("load", () => {
+
+  const query = "Cake"; 
+
+  container.innerHTML = "<p>Loading...</p>";
+
+  fetchMeals(query).then((meals) => {
+    
+    displayMeals(meals, "Popular Items");
+  });
 });
