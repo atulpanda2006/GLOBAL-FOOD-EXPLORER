@@ -4,10 +4,9 @@ async function fetchMeals(query) {
 
     const res = await fetch(
       `https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`
-    );
+    );  
 
-
-    const data = await res.json();
+    const data = await res.json();  
 
     let meals = data.meals ? data.meals : [];
 
@@ -108,6 +107,7 @@ input.addEventListener("keydown", (e) => {
 
 function displayMeals(meals, title) {
 
+
   container.innerHTML = "";
 
   const heading = document.createElement("h1");
@@ -176,8 +176,30 @@ function displayMeals(meals, title) {
 
     name.style.fontSize = "20px";
 
+    const cart = document.createElement("button")
 
-    card.append(image, name);
+    cart.textContent = "Add to Cart";
+
+    cart.style.padding = "5px";
+    
+    cart.style.borderRadius = "5px";
+
+    cart.style.cursor = "pointer";
+
+    cart.addEventListener("mouseenter",()=> {
+      
+
+      cart.style.boxShadow = "0 0 5px #f403fc, 0 0 12px #53ed74,0 0 10px #eddb53";
+
+    })
+
+    cart.addEventListener("mouseleave",()=>{
+
+        cart.style.boxShadow = "";
+    })
+
+
+    card.append(image, name,cart);
 
 
     image.addEventListener("mouseenter", () => {
@@ -203,6 +225,7 @@ function displayMeals(meals, title) {
     });
 
     image.addEventListener("mouseleave", () => {
+
       image.style.transform = "";
 
 
@@ -212,9 +235,11 @@ function displayMeals(meals, title) {
     container.appendChild(card);
 
     image.addEventListener("click", () => {
+
       const link = document.createElement("a");
 
       if (item.YoutubeLink) {
+
         link.href = item.YoutubeLink;
 
         
@@ -335,7 +360,9 @@ mode.addEventListener("click", () => {
 
 
     body.style.backgroundColor = "white";
-  } else {
+  } 
+  
+  else {
 
 
     mode.textContent = "Dark";
