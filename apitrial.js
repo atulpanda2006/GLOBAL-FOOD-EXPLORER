@@ -74,7 +74,57 @@ const logo = document.getElementById("logo");
 
 const container = document.getElementById("container");
 
+let cartItems = [];
 
+const cartBox = document.createElement("div");
+
+
+document.body.insertBefore(cartBox, container);
+
+
+function renderCart() {
+
+
+  cartBox.innerHTML = "<h3>🛒 Cart</h3>";
+
+
+  if (cartItems.length === 0) {
+
+    cartBox.innerHTML = "";
+
+    return;
+  }
+
+  cartItems.forEach((item, index) => {
+
+
+    const div = document.createElement("div");
+
+
+    const name = document.createElement("span");
+
+    name.innerText = item.Meal;
+
+
+    const del = document.createElement("button");
+
+    del.innerText = "❌";
+
+
+    del.addEventListener("click", () => {
+
+      cartItems.splice(index, 1);
+
+
+      renderCart();
+    });
+
+    div.append(name, del);
+
+
+    cartBox.append(div);
+  });
+}
 
 logo.addEventListener("click", () => {
   location.reload();
@@ -198,6 +248,12 @@ function displayMeals(meals, title) {
         cart.style.boxShadow = "";
     })
 
+cart.addEventListener("click", () => {
+
+  cartItems.push(item);
+
+  renderCart();
+});
 
     card.append(image, name,cart);
 
