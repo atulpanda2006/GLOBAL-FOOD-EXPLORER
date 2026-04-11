@@ -51,9 +51,7 @@ An interactive web application that allows users to explore, search, and discove
 ├── index.html
 ├── styles.css
 ├── apitrial.js
-├── assets/
-│   ├── logo.svg
-│   └── images
+
 ```
 
 ---
@@ -69,13 +67,6 @@ An interactive web application that allows users to explore, search, and discove
    * Add items to cart
    * Watch recipe videos
 
----
-
-## 📸 Screenshots
-
-Add screenshots here for better presentation
-
----
 
 ## 🚧 Future Improvements
 
