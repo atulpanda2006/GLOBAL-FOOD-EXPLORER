@@ -41,7 +41,7 @@ An interactive web application that allows users to explore, search, and discove
 * **CSS3** – Styling & responsiveness
 * **JavaScript (Vanilla JS)** – Logic & DOM manipulation
 * **MealDB API** – Data source
-  👉 https://www.themealdb.com/
+  👉 [https://www.themealdb.com/]
 
 ---
 
@@ -61,7 +61,7 @@ An interactive web application that allows users to explore, search, and discove
 ## ⚙️ How It Works
 
 1. User enters a search query
-2. App fetches data from MealDB API 
+2. App fetches data from MealDB API
 3. Meals are displayed dynamically
 4. User can:
 
@@ -73,7 +73,7 @@ An interactive web application that allows users to explore, search, and discove
 
 ## 📸 Screenshots
 
-*(Add screenshots here for better presentation)*
+Add screenshots here for better presentation
 
 ---
 
@@ -98,11 +98,11 @@ An interactive web application that allows users to explore, search, and discove
 
 ## 🌐 Live Demo
 
-👉 https://global-food-explorer.vercel.app/
+👉 [https://global-food-explorer.vercel.app/]
 
 ---
 
 ## 📌 Author
 
-**Atul Panda**
+### Atul Panda
 
