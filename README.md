@@ -1,9 +1,108 @@
-GLOBAL FOOD EXPLORER
+# 🍽️ Global Food Explorer
 
+An interactive web application that allows users to explore, search, and discover meals from around the world using real-time API data. Users can browse cuisines, view meal details, and add items to a cart-like interface.
 
+---
 
+## 🚀 Features
 
-Global Food Explorer is a web-based application designed to help users discover meals from different parts of the world.
-The main idea behind the project is to provide a simple and interactive platform where users can explore food items by searching for meal names and viewing related information.
+* 🔍 **Search Functionality**
+  Search meals dynamically using keywords
 
-This project demonstrates how real-world applications fetch and present external data dynamically using APIs. It focuses on understanding how data flows from an external source to the user interface in a meaningful way.
+* 🌍 **Cuisine Filters**
+  Explore meals by categories like:
+
+  * Indian
+  * Japanese
+  * Chinese
+
+* 🖼️ **Dynamic Meal Display**
+  Meals are fetched from an external API and rendered in real-time
+
+* 🛒 **Cart System**
+
+  * Add meals to cart
+  * Remove items dynamically
+
+* 🎥 **YouTube Integration**
+  Click on meals to view preparation videos
+
+* 🌙 **Dark/Light Mode Toggle**
+  Switch between themes for better user experience
+
+* ✨ **Interactive UI Effects**
+  Hover animations, shadows, and transitions
+
+---
+
+## 🛠️ Tech Stack
+
+* **HTML5** – Structure
+* **CSS3** – Styling & responsiveness
+* **JavaScript (Vanilla JS)** – Logic & DOM manipulation
+* **MealDB API** – Data source
+  👉 https://www.themealdb.com/
+
+---
+
+## 📂 Project Structure
+
+```
+├── index.html
+├── styles.css
+├── apitrial.js
+├── assets/
+│   ├── logo.svg
+│   └── images
+```
+
+---
+
+## ⚙️ How It Works
+
+1. User enters a search query
+2. App fetches data from MealDB API 
+3. Meals are displayed dynamically
+4. User can:
+
+   * Filter by cuisine
+   * Add items to cart
+   * Watch recipe videos
+
+---
+
+## 📸 Screenshots
+
+*(Add screenshots here for better presentation)*
+
+---
+
+## 🚧 Future Improvements
+
+* Add proper cart UI with pricing
+* Improve filtering logic (more accurate cuisine grouping)
+* Add user authentication
+* Save cart using local storage
+* Improve mobile responsiveness
+
+---
+
+## 🧠 Key Learnings
+
+* Working with external APIs
+* Asynchronous JavaScript (fetch, promises)
+* DOM manipulation and event handling
+* Building interactive UI without frameworks
+
+---
+
+## 🌐 Live Demo
+
+👉 https://global-food-explorer.vercel.app/
+
+---
+
+## 📌 Author
+
+**Atul Panda**
+
