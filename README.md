@@ -68,16 +68,6 @@ An interactive web application that allows users to explore, search, and discove
    * Watch recipe videos
 
 
-## 🚧 Future Improvements
-
-* Add proper cart UI with pricing
-* Improve filtering logic (more accurate cuisine grouping)
-* Add user authentication
-* Save cart using local storage
-* Improve mobile responsiveness
-
----
-
 ## 🧠 Key Learnings
 
 * Working with external APIs
