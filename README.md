@@ -1,6 +1,6 @@
 # 🍽️ Global Food Explorer
 
-An interactive web application that allows users to explore, search, and discover meals from around the world using real-time API data. Users can browse cuisines, view meal details, and add items to a cart-like interface.
+An interactive web application that allows users to explore, search, and discover meals from around the world using real-time API data. Users can browse cuisines, , and add items to a cart-like interface.
 
 ---
 
